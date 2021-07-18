@@ -1,0 +1,66 @@
+
+
+AffiliateRelationStatus
+NOT_AFFILIATED: Vendor client ID valid but not affiliated  
+AFFILIATED: Vendor client ID valid and affiliated     
+INVALID_USER: Provided vendor client ID is not valid    
+
+TokenType
+BEARER: Token type used for Vendor Web API interactions for making requests on a customers behalf.    
+
+GrantType
+REFRESH_TOKEN: A token that can be used to create a new access token when using the Vendor Web API    
+AUTHORIZATION_CODE: Returned via the Vendor Web API token request.     
+
+winLose
+RESULT_ERR: Record has been affected by a unsettlement. There is no impact on the balance for these records, this just a label to say that these are to be corrected. 
+RESULT_FIX: Record is a correction to the balance to reverse the impact of records shown as in error. If commission has been paid on the original settlement then there will be a second FIX record to reverse the commission. 
+RESULT_LOST: Loss
+RESULT_NOT_APPLICABLE: Amounts relating to commission payments.
+RESULT_WON: Won
+COMMISSION_REVERSAL: Betfair have restored the funds to your account that it previously received from you in commission.
+
+IncludeItem
+ALL: Include all items
+DEPOSITS_WITHDRAWALS: Include payments only
+EXCHANGE: Include exchange bets only
+POKER_ROOM: Include poker transactions only
+
+Wallet
+UK: The Global Exchange wallet
+
+ItemClass
+UNKNOWN: Statement item not mapped to a specific class. All values will be concatenated into a single key/value pair. The key will be 'unknownStatementItem' and the value will be a comma separated string. Please note: This is used to represent commission payment items.
+
+Status
+SUCCESS: Sucess status
+
+SubscriptionStatus
+EXPIRED: Only expired subscriptions    
+CANCELLED: Only cancelled subscriptions  
+UNACTIVATED: Only unactivated subscriptions    
+ACTIVATED: Only activated subscriptions  
+ALL: Any subscription status    
+
+
+<h2 id="AccountsEnums-Enums">Enums</h2><p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-SubscriptionStatus"> </span></p><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>SubscriptionStatus</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><p>Value</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td class="confluenceTd"><p>ALL</p></td><td class="confluenceTd"><p>Any subscription status</p></td></tr><tr><td class="confluenceTd"><p>ACTIVATED</p></td><td class="confluenceTd"><p>Only activated subscriptions</p></td></tr><tr><td class="confluenceTd"><p>UNACTIVATED</p></td><td class="confluenceTd"><p>Only unactivated subscriptions</p></td></tr><tr><td class="confluenceTd"><p>CANCELLED</p></td><td class="confluenceTd"><p>Only cancelled subscriptions</p></td></tr><tr><td class="confluenceTd"><p>EXPIRED</p></td><td class="confluenceTd"><p>Only expired subscriptions</p></td></tr></tbody></table></div>
+</div></div><p><br /> <span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-Status"> </span></p><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>Status</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><p>Value</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td class="confluenceTd"><p>SUCCESS</p></td><td class="confluenceTd"><p>Sucess status</p></td></tr></tbody></table></div>
+</div></div><p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-ItemClass"> </span></p><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>ItemClass</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<div class="table-wrap"><table class="confluenceTable"><colgroup><col /><col /></colgroup><tbody><tr><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Description</p></div></th></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">UNKNOWN</p></td><td class="confluenceTd"><p style="margin-left: 0.0px;">Statement item not mapped to a specific class. All values will be concatenated into a single key/value pair. The key will be 'unknownStatementItem' and the value will be a comma separated string. <strong>Please note: </strong> This is used to represent commission payment items.</p></td></tr></tbody></table></div>
+</div></div><p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-Wallet"> </span></p><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>Wallet</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<div class="table-wrap"><table class="confluenceTable"><colgroup><col /><col /></colgroup><tbody><tr><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Description</p></div></th></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">UK</p></td><td class="confluenceTd"><p style="margin-left: 0.0px;"> The Global Exchange wallet</p></td></tr></tbody></table></div>
+</div></div><p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-IncludeItem"> </span></p><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>IncludeItem</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Description</p></div></th></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">ALL</p></td><td class="confluenceTd"><p>Include all items</p></td></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">DEPOSITS_WITHDRAWALS</p></td><td class="confluenceTd"><p>Include payments only</p></td></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">EXCHANGE</p></td><td class="confluenceTd"><p>Include exchange bets only</p></td></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">POKER_ROOM</p></td><td class="confluenceTd"><p>Include poker transactions only</p></td></tr></tbody></table></div>
+</div></div><p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-winLose"> </span></p><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>winLose</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<div class="table-wrap"><table class="confluenceTable"><colgroup><col /><col /></colgroup><tbody><tr><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner" style="margin-left: 0.0px;"><p>Description</p></div></th></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">RESULT_ERR</p></td><td class="confluenceTd"><p>Record has been affected by a unsettlement. There is no impact on the balance for these records, this just a label to say that these are to be corrected. </p></td></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">RESULT_FIX</p></td><td class="confluenceTd"><p>Record is a correction to the balance to reverse the impact of records shown as in error. If commission has been paid on the original settlement then there will be a second FIX record to reverse the commission. </p></td></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">RESULT_LOST</p></td><td class="confluenceTd"><p>Loss</p></td></tr><tr><td class="confluenceTd"><p style="margin-left: 0.0px;">RESULT_NOT_APPLICABLE</p></td><td class="confluenceTd"><p>Amounts relating to commission payments.</p></td></tr><tr><td colspan="1" class="confluenceTd">RESULT_WON</td><td colspan="1" class="confluenceTd">Won</td></tr><tr><td colspan="1" class="confluenceTd">COMMISSION_REVERSAL</td><td colspan="1" class="confluenceTd">Betfair have restored the funds to your account that it previously received from you in commission.</td></tr></tbody></table></div>
+</div></div><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>GrantType</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-granttype"> </span></p><div class="table-wrap"><table class="confluenceTable"><colgroup><col /><col /></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner"><p>Description</p></div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>AUTHORIZATION_CODE</p></td><td class="confluenceTd"><p>Returned via the Vendor Web API token request. <span>The </span><strong>authorization code</strong><span> will be valid for a single use for 10 minutes.</span></p></td></tr><tr><td class="confluenceTd"><p>REFRESH_TOKEN</p></td><td class="confluenceTd"><p><span>A token that can be used to create a new access token when using the Vendor Web API</span></p></td></tr></tbody></table></div>
+</div></div><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b>TokenType</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-tokentype"> </span></p><div class="table-wrap"><table class="confluenceTable"><colgroup><col /><col /></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner"><p>Description</p></div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>BEARER</p></td><td class="confluenceTd"><p> Token type used for Vendor Web API interactions for making requests on a customers behalf.</p></td></tr></tbody></table></div>
+</div></div><div class="panel conf-macro output-block" data-hasbody="true" data-macro-name="panel" style="background-color: #FFFFFF;border-width: 1px;"><div class="panelHeader" style="border-bottom-width: 1px;background-color: #99CC66;"><b> AffiliateRelationStatus</b></div><div class="panelContent" style="background-color: #FFFFFF;">
+<p><span class="confluence-anchor-link conf-macro output-inline" data-hasbody="false" data-macro-name="anchor" id="AccountsEnums-affiliaterelationstatus"> </span></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner"><p>Value</p></div></th><th class="confluenceTh"><div class="tablesorter-header-inner"><p>Description</p></div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>INVALID_USER</p></td><td class="confluenceTd"><p>Provided vendor client ID is not valid</p></td></tr><tr><td class="confluenceTd"><p>AFFILIATED</p></td><td class="confluenceTd"><p>Vendor client ID valid and affiliated</p></td></tr><tr><td class="confluenceTd"><p>NOT_AFFILIATED</p></td><td class="confluenceTd"><p>Vendor client ID valid but not affiliated</p></td></tr></tbody></table></div>
+</div></div>
+</div>
+<div id="comments-section" class="pageSection group">
