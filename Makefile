@@ -2,30 +2,30 @@
 
 include config.mk
 
-# SRC_DIR  = .
+SRC_DIR = .
 
-SRC = main.cpp
-OBJ = $(SRC:.cpp=.o)
+SRC = ${SRC_DIR}/main.cpp
+#      ${SRC_DIR}/main.c \
+#      ${SRC_DIR}/base64.c \
+#      ${SRC_DIR}/md5.c \
+#      ${SRC_DIR}/lib.c
+
+OBJ = ${SRC:.cpp=.o}
 
 PRG_NAME = exApi
 
-all: exApi
+# creates executable
+all: ${OBJ}
+	${CC} -o ${PRG_NAME} $(LDFLAGS) ${OBJ} $(LDLIBS)
 
-.cpp.o:
-	$(CC) $(STCFLAGS) -c $<
+# creates .o files from .c files with same names
+${SRC_DIR}/.c.o:
+	${CC} -c $(CPPFLAGS) $(CFLAGS) $<
 
-main.o: args.h
-
-$(OBJ): config.mk
-
-exApi: $(OBJ)
-	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
-
-run: exApi
+run: all
 	./${PRG_NAME}
 
 clean: 
 	rm -rf ${OBJ} ${PRG_NAME}
 
-.PHONY: all clean run
-
+.PHONY: all clean

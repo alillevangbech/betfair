@@ -1,11 +1,12 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-// BETFAIR ARGS
+// BETFAIR ACCOUNT API ARGS
 struct Arg_CreateDeveloperAppKeys;
 
-// BETFAIR TYPES
-struct Type_AccountAPINGExceptionType;
+// BETFAIR ACCOUNT API TYPES
+
+// BETFAIR ACCOUNT API ENUMS
 
 // BETFAIR MISC
 struct Misc_BetFairResponse;

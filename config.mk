@@ -1,15 +1,11 @@
 
-CPRINC = /usr/include/cpr
+CPRINC = /usr/include/cpr/
 CPRLIB = /usr/lib/libcpr.so
 
-# flags
-INCS = -I$(CPRINC)
-LIBS = -L$(CPRLIB) -lcprlib -s
+CPPFLAGS = -I$(CPRINC) -D_POSIX_C_SOURCE=200809L
 CFLAGS   = -std=c++17 -pedantic -Wall -Wextra -Os
 
-STCPPFLAGS = -D_XOPEN_SOURCE=600
-STCFLAGS = $(INCS) $(STCPPFLAGS) $(CPPFLAGS) $(CFLAGS)
-STLDFLAGS = $(LIBS) $(LDFLAGS)
+LDFLAGS  = -L$(CPRLIB) -s
+LDLIBS   = -lcpr
 
-# compiler and linker
 CC = g++
