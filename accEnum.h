@@ -1,4 +1,4 @@
-
+#include <nlohmann/json.hpp>
 
 enum class AffiliateRelationStatus
 {
@@ -36,7 +36,7 @@ NLOHMANN_JSON_SERIALIZE_ENUM(GrantType, {
                                             {GrantType::REFRESH_TOKEN, "REFRESH_TOKEN"},
                                         });
 
-enum class winLose
+enum class WinLose
 {
 // Record has been affected by a unsettlement. There is no impact on the balance for these records, this just a label to say that these are to be corrected. 
     RESULT_ERR,
@@ -51,13 +51,13 @@ enum class winLose
 // Betfair have restored the funds to your account that it previously received from you in commission.
     COMMISSION_REVERSAL,
 };
-NLOHMANN_JSON_SERIALIZE_ENUM(winLose,   {
-                                            {winLose::COMMISSION_REVERSAL, "COMMISSION_REVERSAL"},
-                                            {winLose::RESULT_WON, "RESULT_WON"},
-                                            {winLose::RESULT_NOT_APPLICABLE, "RESULT_NOT_APPLICABLE"},
-                                            {winLose::RESULT_LOST, "RESULT_LOST"},
-                                            {winLose::RESULT_FIX, "RESULT_FIX"},
-                                            {winLose::RESULT_ERR, "RESULT_ERR"},
+NLOHMANN_JSON_SERIALIZE_ENUM(WinLose,   {
+                                            {WinLose::COMMISSION_REVERSAL, "COMMISSION_REVERSAL"},
+                                            {WinLose::RESULT_WON, "RESULT_WON"},
+                                            {WinLose::RESULT_NOT_APPLICABLE, "RESULT_NOT_APPLICABLE"},
+                                            {WinLose::RESULT_LOST, "RESULT_LOST"},
+                                            {WinLose::RESULT_FIX, "RESULT_FIX"},
+                                            {WinLose::RESULT_ERR, "RESULT_ERR"},
                                         });
 
 enum class IncludeItem
@@ -120,4 +120,26 @@ enum class SubscriptionStatus
 };
 NLOHMANN_JSON_SERIALIZE_ENUM(SubscriptionStatus,    {
                                                         {SubscriptionStatus::EXPIRED, "EXPIRED"},
+                                                    });
+
+// BETTING API
+enum class MarketType
+{
+// Asian Handicap
+    A,
+// Line market
+    L,
+// Odds market    
+    O,
+// The market does not have an applicable marketType.  
+    R,
+// Odds market   
+    NOT_APPLICABLE,
+};
+NLOHMANN_JSON_SERIALIZE_ENUM(MarketType,    {
+                                                        {MarketType::A, "A"},
+                                                        {MarketType::L, "L"},
+                                                        {MarketType::O, "O"},
+                                                        {MarketType::R, "R"},
+                                                        {MarketType::NOT_APPLICABLE, "NOT_APPLICABLE"},
                                                     });

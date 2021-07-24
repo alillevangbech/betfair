@@ -4,15 +4,12 @@ include config.mk
 
 SRC_DIR = .
 
-SRC = ${SRC_DIR}/main.cpp
-#      ${SRC_DIR}/main.c \
-#      ${SRC_DIR}/base64.c \
-#      ${SRC_DIR}/md5.c \
-#      ${SRC_DIR}/lib.c
+SRC = ${SRC_DIR}/driver.cpp
+#       ${SRC_DIR}/accLib.cpp
 
 OBJ = ${SRC:.cpp=.o}
 
-PRG_NAME = exApi
+PRG_NAME = betfarAccountAPI
 
 # creates executable
 all: ${OBJ}
