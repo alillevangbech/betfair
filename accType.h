@@ -1,3 +1,6 @@
+#ifndef ACC_TYPE_H
+#define ACC_TYPE_H
+
 #include <string>
 #include <vector>
 #include <map>
@@ -8,8 +11,31 @@
 using accDate = std::string;
 using json = nlohmann::json;
 
-
-
+/*
+struct bfExceptionResponse;
+struct bfDetail;
+struct bfAccountAPINGException;
+struct authKeepAlive;
+struct TransferResponse;
+struct SubscriptionHistory;
+struct AccountSubscription;
+struct SubscriptionTokenInfo;
+struct DeveloperApp;
+struct DeveloperAppVersion;
+struct AccountFundsResponse;
+struct AccountDetailsResponse;
+struct AccountStatementReport;
+struct StatementItem;
+struct StatementLegacyData;
+struct TimeRange;
+struct CurrencyRate;
+struct AuthorisationResponse;
+struct SubscriptionOptions;
+struct VendorAccessTokenInfo;
+struct VendorDetails;
+struct AffiliateRelation;
+struct ApplicationSubscription;
+*/
 
 struct ApplicationSubscription
 {
@@ -340,8 +366,6 @@ struct SubscriptionHistory
 };
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SubscriptionHistory, clientReference, subscriptionStatus, cancellationDateTime, activationDateTime, createdDateTime, expiredDateTime, expiryDateTime, subscriptionToken);
 
-// Application subscription details
-
 // Transfer operation response
 struct TransferResponse
 {
@@ -351,4 +375,67 @@ struct TransferResponse
 };
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(TransferResponse, transactionId);
 
+struct bfAccountAPINGException
+{
+    std::string requestUUID;
+    std::string errorCode;
+    std::string errorDetails;
 
+    bool empty() const { return requestUUID.empty() && errorCode.empty() && errorDetails.empty();}
+    void setEmpty() { requestUUID = std::string(); errorCode = std::string(); errorDetails = std::string(); }
+};
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(bfAccountAPINGException, requestUUID, errorCode, errorDetails);
+
+struct bfDetail
+{
+    std::string exceptionname;
+    bfAccountAPINGException AccountAPINGException;
+
+    bool empty() const { return exceptionname.empty() && AccountAPINGException.empty();}
+    void setEmpty() { exceptionname = std::string(); AccountAPINGException.setEmpty(); }
+};
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(bfDetail, exceptionname, AccountAPINGException);
+
+
+struct bfExceptionResponse
+{
+    std::string faultcode;
+    std::string faultstring;
+    bfDetail detail;
+
+    bool empty() const { return faultcode.empty() && faultstring.empty() && detail.empty();}
+};
+
+void to_json(json& j, const bfExceptionResponse& p) {
+    j = json{
+        {"faultcode", p.faultcode},
+        {"faultstring", p.faultstring}
+    };
+    if (p.detail.empty())
+        j.push_back({"detail", json::object()});
+    else
+        j.push_back({"detail", p.detail});
+}
+
+void from_json(const json& j, bfExceptionResponse& p) {
+    j.at("faultcode").get_to(p.faultcode);
+    j.at("faultstring").get_to(p.faultstring);
+
+    if (j.at("detail").empty())
+        p.detail.setEmpty();
+    else
+        j.at("detail").get_to(p.detail);
+}
+
+// LOGIN, KEEP_ALIVE, LOGOUT
+struct authKeepAlive
+{
+    public:
+        std::string token;
+        std::string product;
+        authStatus status;
+        authError error;
+};
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(authKeepAlive, token, product, status, error);
+
+#endif

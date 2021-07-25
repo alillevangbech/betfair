@@ -5,19 +5,18 @@
 #include "cpr/cpr.h"
 #include "nlohmann/json.hpp"
 #include <iostream>
+#include "./accEnum.h"
 #include "./accType.h"
-#include "./accException.h"
 
 using json = nlohmann::json;
-std::string authRequest(const std::string& appKey);
+authKeepAlive keepAliveRequest(const std::string& appKey, const std::string& sessionId);
 
-// AccountFundsResponse getAccountFunds ()
-enum class statusCode
+template<typename T>
+std::string EnumToString(const T e)
 {
-    UNKNOWN = 0,
-    VALID = 200,
-    EXCEPTION = 400,
-    ERROR = 404,
+    json j = e;
+    std::string res = j.dump();
+    return res.substr(1,res.size() - 2);
 };
 
 template <typename T>
@@ -43,9 +42,20 @@ class Response
         };
 };
 
+
+// AccountFundsResponse getAccountFunds ()
+enum class statusCode
+{
+    UNKNOWN = 0,
+    VALID = 200,
+    EXCEPTION = 400,
+    ERROR = 404,
+};
+
+
 int main()
-    {
-    const std::string sessionId = "cc3XACtZjDhDMyimFnyEUK7MOCAFi+JOrT+R4wHetp4=";
+{
+    const std::string sessionId = "Art1yBVrXqufIf7Hnh9I4etkqvnMJ24lyG3KByOUahkg=";
     const std::string appName = "BetfairAnalytics";
     const std::string appId = "88578";
     const std::string appKey = "VcwjIeTG67VJeQTZ";
@@ -70,6 +80,9 @@ int main()
     Response<AccountFundsResponse> bfResp = Response<AccountFundsResponse>();
     json j = json::parse(r.text);
 
+    std::cout << r.status_code << std::endl;
+    std::cout << r.text << std::endl;
+
     switch (static_cast<statusCode>(r.status_code))
     {
         case statusCode::VALID: /* FALLTHROUGH */
@@ -85,16 +98,19 @@ int main()
             break;
     };
 
-    std::cout << r.status_code << std::endl;
-    std::cout << r.text << std::endl;
 
+    auto text = keepAliveRequest(appKey, sessionId);
+
+    std::cout << text.token << std::endl;
+    std::cout << text.product << std::endl;
+    std::cout << EnumToString<authStatus>(text.status) << std::endl;
+    std::cout << EnumToString<authError>(text.error) << std::endl;
     return 0;
 }
 
 
-std::string keepAliveRequest(const std::string& appKey, const std::string& sessionId)
+authKeepAlive keepAliveRequest(const std::string& appKey, const std::string& sessionId)
 {
-    //auth
     std::string auth_global_url = "https://identitysso.betfair.com/api/keepAlive";
     std::string user = "alexanderlillevangbech@gmail.com";
     std::string pass = "Khjiyu867";
@@ -107,30 +123,13 @@ std::string keepAliveRequest(const std::string& appKey, const std::string& sessi
         {"X-Authentication", sessionId},
         {"Connection", "keep-alive"},
     };
+
      cpr::Response r = cpr::Post(cpr::Url{auth_global_url},
                                 authHeaders,
                                 authBody);
 
-    return r.text;
-};
+     json j = json::parse(r.text);
+     authKeepAlive ret = j;
 
-std::string authRequest(const std::string& appKey)
-{
-    //auth
-    std::string auth_global_url = "https://identitysso.betfair.com/api/login";
-    std::string user = "alexanderlillevangbech@gmail.com";
-    std::string pass = "Khjiyu867";
-    cpr::Payload authBody = {{"username",user},{"password",pass}};
-    cpr::Header authHeaders = {
-        {"Content-Type","application/x-www-form-urlencoded"},
-        {"Content-Length", std::to_string(authBody.GetContent(cpr::CurlHolder()).length())},
-        {"Accept", "application/json"},
-        {"X-Application", appKey},
-        {"Connection", "keep-alive"},
-    };
-     cpr::Response r = cpr::Post(cpr::Url{auth_global_url},
-                                authHeaders,
-                                authBody);
-
-    return r.text;
+     return ret;
 };

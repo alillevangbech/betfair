@@ -1,4 +1,8 @@
+#ifndef ACC_ENUM_H
+#define ACC_ENUM_H
 #include <nlohmann/json.hpp>
+
+
 
 enum class AffiliateRelationStatus
 {
@@ -122,6 +126,29 @@ NLOHMANN_JSON_SERIALIZE_ENUM(SubscriptionStatus,    {
                                                         {SubscriptionStatus::EXPIRED, "EXPIRED"},
                                                     });
 
+// LOGIN, KEEP_ALIVE, LOGOUT
+
+enum class authStatus
+{
+    SUCCESS,
+    FAIL,
+};
+NLOHMANN_JSON_SERIALIZE_ENUM(authStatus,    {
+                                                        {authStatus::SUCCESS, "SUCCESS"},
+                                                        {authStatus::FAIL, "FAIL"},
+                                                    });
+enum class authError
+{
+    INPUT_VALIDATION_ERROR,
+    INTERNAL_ERROR,
+    NO_SESSION,
+};
+NLOHMANN_JSON_SERIALIZE_ENUM(authError,    {
+                                                        {authError::INPUT_VALIDATION_ERROR, "INPUT_VALIDATION_ERROR"},
+                                                        {authError::INTERNAL_ERROR, "INTERNAL_ERROR"},
+                                                        {authError::NO_SESSION, "NO_SESSION"},
+                                                    });
+
 // BETTING API
 enum class MarketType
 {
@@ -143,3 +170,4 @@ NLOHMANN_JSON_SERIALIZE_ENUM(MarketType,    {
                                                         {MarketType::R, "R"},
                                                         {MarketType::NOT_APPLICABLE, "NOT_APPLICABLE"},
                                                     });
+#endif

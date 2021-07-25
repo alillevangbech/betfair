@@ -1,7 +1,8 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "./accType.h"
+#include "accFwd.h"
+
 
 // Create 2 Application Keys for given user; one 'Delayed and the other 'Live'. You must apply to have your 'Live' App Key activated.	 
 DeveloperApp createDeveloperAppKeys (std::string appName );
