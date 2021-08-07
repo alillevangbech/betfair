@@ -1,39 +1,48 @@
 .POSIX:
 
 # TODO:
-# Create driver executable which collects all .o files
+# Create driver executable which collects all .o files | literally what a test program do. lol
+#
 # Create static library for daemon to link up against.
 
 include config.mk
 
-SRC_DIR = .
+SRC = 	accType.cpp \
+    	accEnum.cpp
 
-SRC = 	${SRC_DIR}/accType.cpp \
-    	${SRC_DIR}/accEnum.cpp
+OBJ = $(SRC:.cpp=.o)
 
-#	${SRC_DIR}/driver.cpp
+accType.o: accType.cpp
+accEnum.o: accEnum.cpp
 
-OBJ = ${SRC:.cpp=.o}
-
-${SRC_DIR}/.c.o:
-	${CC} -c $(CPPFLAGS) $(CFLAGS) $<
-
-PRG_NAME = exApi
+# .c.o:
+# 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<
 
 
-driver.o: ${OBJ}
-	${CC} -c $(CPPFLAGS) $(CFLAGS) $<
 
-# creates executable
-all: ${OBJ}
-	${CC} -o ${PRG_NAME} $(LDFLAGS) ${OBJ} $(LDLIBS)
 
-# creates .o files from .c files with same names
 
-run: all
-	./${PRG_NAME}
 
-clean: 
-	rm -rf ${OBJ} ${PRG_NAME}
 
-.PHONY: all clean
+# 	
+# 	$(SRC_DIR)/.c.o:
+# 		$(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+# 	
+# 	PRG_NAME = exApi
+# 	
+# 	driver.o: $(OBJ)
+# 		$(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+# 	
+# 	# creates executable
+# 	all: driver.o
+# 		$(CC) -o ${PRG_NAME} $(LDFLAGS) driver.o $(LDLIBS)
+# 	
+# 	# creates .o files from .c files with same names
+# 	
+# 	run: all
+# 		./$(PRG_NAME)
+# 	
+# 	clean: 
+# 		rm -rf $(OBJ) driver.o ${PRG_NAME}
+# 	
+# 	.PHONY: all clean

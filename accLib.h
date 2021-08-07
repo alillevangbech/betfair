@@ -1,7 +1,7 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "accFwd.h"
+#include "accType.h"
 
 
 // Create 2 Application Keys for given user; one 'Delayed and the other 'Live'. You must apply to have your 'Live' App Key activated.	 

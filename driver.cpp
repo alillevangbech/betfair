@@ -2,10 +2,9 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <iostream>
 #include "cpr/cpr.h"
 #include "nlohmann/json.hpp"
-#include <iostream>
-#include "./accEnum.h"
 #include "./accType.h"
 
 using json = nlohmann::json;
