@@ -1,5 +1,7 @@
 #ifndef ACC_ENUM_H
 #define ACC_ENUM_H
+// accEnum.cpp
+#include <json_fwd.hpp>
 
 enum class AffiliateRelationStatus
 {
@@ -10,12 +12,16 @@ enum class AffiliateRelationStatus
 // Provided vendor client ID is not valid    
     INVALID_USER,
 };
+void to_json(nlohmann::json& j, const AffiliateRelationStatus& p);
+void from_json(const nlohmann::json& j, AffiliateRelationStatus& p);
 
 enum class TokenType
 {
 // Token type used for Vendor Web API interactions for making requests on a customers behalf.    
     BEARER,
 };
+void to_json(nlohmann::json& j, const TokenType& p);
+void from_json(const nlohmann::json& j, TokenType p);
 
 enum class GrantType
 {
@@ -24,6 +30,8 @@ enum class GrantType
 // Returned via the Vendor Web API token request.     
     AUTHORIZATION_CODE,
 };
+void to_json(nlohmann::json& j, const GrantType& p);
+void from_json(const nlohmann::json& j, GrantType p);
 
 enum class WinLose
 {
@@ -40,6 +48,8 @@ enum class WinLose
 // Betfair have restored the funds to your account that it previously received from you in commission.
     COMMISSION_REVERSAL,
 };
+void to_json(nlohmann::json& j, const WinLose& p);
+void from_json(const nlohmann::json& j, WinLose p);
 
 enum class IncludeItem
 {
@@ -52,24 +62,32 @@ enum class IncludeItem
 // Include poker transactions only
     POKER_ROOM,
 };
+void to_json(nlohmann::json& j, const IncludeItem& p);
+void from_json(const nlohmann::json& j, IncludeItem p);
 
 enum class Wallet
 {
 // The Global Exchange wallet
     UK,
 };
+void to_json(nlohmann::json& j, const Wallet& p);
+void from_json(const nlohmann::json& j, Wallet p);
 
 enum class ItemClass
 {
 // Statement item not mapped to a specific class. All values will be concatenated into a single key/value pair. The key will be 'unknownStatementItem' and the value will be a comma separated string. Please note: This is used to represent commission payment items.
     UNKNOWN,
 };
+void to_json(nlohmann::json& j, const ItemClass& p);
+void from_json(const nlohmann::json& j, ItemClass p);
 
 enum class Status
 {
 // Sucess status
     SUCCESS,
 };
+void to_json(nlohmann::json& j, const Status& p);
+void from_json(const nlohmann::json& j, Status p);
 
 enum class SubscriptionStatus
 {
@@ -84,6 +102,8 @@ enum class SubscriptionStatus
 // Any subscription status    
     ALL,
 };
+void to_json(nlohmann::json& j, const SubscriptionStatus& p);
+void from_json(const nlohmann::json& j, SubscriptionStatus p);
 
 // LOGIN, KEEP_ALIVE, LOGOUT
 
@@ -92,12 +112,17 @@ enum class authStatus
     SUCCESS,
     FAIL,
 };
+void to_json(nlohmann::json& j, const authStatus& p);
+void from_json(const nlohmann::json& j, authStatus p);
+
 enum class authError
 {
     INPUT_VALIDATION_ERROR,
     INTERNAL_ERROR,
     NO_SESSION,
 };
+void to_json(nlohmann::json& j, const authError& p);
+void from_json(const nlohmann::json& j, authError p);
 
 // BETTING API
 enum class MarketType
@@ -113,4 +138,7 @@ enum class MarketType
 // Odds market   
     NOT_APPLICABLE,
 };
+void to_json(nlohmann::json& j, const MarketType& p);
+void from_json(const nlohmann::json& j, MarketType p);
+
 #endif
