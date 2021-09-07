@@ -4,8 +4,7 @@ include config.mk
 
 PRG_NAME = exApi
 
-SRC = 	accType.cpp \
-    	accEnum.cpp
+SRC = 	accType.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -17,9 +16,8 @@ build: $(OBJ) driver
 driver: driver.o $(OBJ)
 	$(CC) -o ${PRG_NAME} $(LDFLAGS) $? $(LDLIBS) $(CPPFLAGS)
 
-accType.o: accType.cpp accType.h
-accEnum.o: accEnum.cpp accEnum.h
-driver.o: driver.cpp driver.h
+accType.o: accType.cpp accType.h accEnum.h
+driver.o: driver.cpp driver.h accLib.h
 
 .cpp.o:
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<

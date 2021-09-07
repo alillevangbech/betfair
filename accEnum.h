@@ -1,10 +1,11 @@
 #ifndef ACC_ENUM_H
 #define ACC_ENUM_H
 // accEnum.cpp
-#include <json_fwd.hpp>
+#include <nlohmann/json.hpp>
 
 enum class AffiliateRelationStatus
 {
+    CEMPTY,
 // Vendor client ID valid but not affiliated  
     NOT_AFFILIATED,
 // Vendor client ID valid and affiliated     
@@ -12,29 +13,26 @@ enum class AffiliateRelationStatus
 // Provided vendor client ID is not valid    
     INVALID_USER,
 };
-void to_json(nlohmann::json& j, const AffiliateRelationStatus& p);
-void from_json(const nlohmann::json& j, AffiliateRelationStatus& p);
 
 enum class TokenType
 {
+    CEMPTY,
 // Token type used for Vendor Web API interactions for making requests on a customers behalf.    
     BEARER,
 };
-void to_json(nlohmann::json& j, const TokenType& p);
-void from_json(const nlohmann::json& j, TokenType p);
 
 enum class GrantType
 {
+    CEMPTY,
 // A token that can be used to create a new access token when using the Vendor Web API    
     REFRESH_TOKEN,
 // Returned via the Vendor Web API token request.     
     AUTHORIZATION_CODE,
 };
-void to_json(nlohmann::json& j, const GrantType& p);
-void from_json(const nlohmann::json& j, GrantType p);
 
 enum class WinLose
 {
+    CEMPTY,
 // Record has been affected by a unsettlement. There is no impact on the balance for these records, this just a label to say that these are to be corrected. 
     RESULT_ERR,
 // Record is a correction to the balance to reverse the impact of records shown as in error. If commission has been paid on the original settlement then there will be a second FIX record to reverse the commission. 
@@ -48,11 +46,10 @@ enum class WinLose
 // Betfair have restored the funds to your account that it previously received from you in commission.
     COMMISSION_REVERSAL,
 };
-void to_json(nlohmann::json& j, const WinLose& p);
-void from_json(const nlohmann::json& j, WinLose p);
 
 enum class IncludeItem
 {
+    CEMPTY,
 // Include all items
     ALL,
 // Include payments only
@@ -62,35 +59,31 @@ enum class IncludeItem
 // Include poker transactions only
     POKER_ROOM,
 };
-void to_json(nlohmann::json& j, const IncludeItem& p);
-void from_json(const nlohmann::json& j, IncludeItem p);
 
 enum class Wallet
 {
+    CEMPTY,
 // The Global Exchange wallet
     UK,
 };
-void to_json(nlohmann::json& j, const Wallet& p);
-void from_json(const nlohmann::json& j, Wallet p);
 
 enum class ItemClass
 {
+    CEMPTY,
 // Statement item not mapped to a specific class. All values will be concatenated into a single key/value pair. The key will be 'unknownStatementItem' and the value will be a comma separated string. Please note: This is used to represent commission payment items.
     UNKNOWN,
 };
-void to_json(nlohmann::json& j, const ItemClass& p);
-void from_json(const nlohmann::json& j, ItemClass p);
 
 enum class Status
 {
+    CEMPTY,
 // Sucess status
     SUCCESS,
 };
-void to_json(nlohmann::json& j, const Status& p);
-void from_json(const nlohmann::json& j, Status p);
 
 enum class SubscriptionStatus
 {
+    CEMPTY,
 // Only expired subscriptions    
     EXPIRED,
 // Only cancelled subscriptions  
@@ -102,31 +95,28 @@ enum class SubscriptionStatus
 // Any subscription status    
     ALL,
 };
-void to_json(nlohmann::json& j, const SubscriptionStatus& p);
-void from_json(const nlohmann::json& j, SubscriptionStatus p);
 
 // LOGIN, KEEP_ALIVE, LOGOUT
 
 enum class authStatus
 {
+    CEMPTY,
     SUCCESS,
     FAIL,
 };
-void to_json(nlohmann::json& j, const authStatus& p);
-void from_json(const nlohmann::json& j, authStatus p);
 
 enum class authError
 {
+    CEMPTY,
     INPUT_VALIDATION_ERROR,
     INTERNAL_ERROR,
     NO_SESSION,
 };
-void to_json(nlohmann::json& j, const authError& p);
-void from_json(const nlohmann::json& j, authError p);
 
 // BETTING API
 enum class MarketType
 {
+    CEMPTY,
 // Asian Handicap
     A,
 // Line market
@@ -138,7 +128,88 @@ enum class MarketType
 // Odds market   
     NOT_APPLICABLE,
 };
-void to_json(nlohmann::json& j, const MarketType& p);
-void from_json(const nlohmann::json& j, MarketType p);
+
+NLOHMANN_JSON_SERIALIZE_ENUM(MarketType,    {
+        {MarketType::CEMPTY, ""},
+        {MarketType::A, "A"},
+        {MarketType::L, "L"},
+        {MarketType::O, "O"},
+        {MarketType::R, "R"},
+        {MarketType::NOT_APPLICABLE, "NOT_APPLICABLE"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(authError,    {
+        {authError::CEMPTY, ""},
+        {authError::INPUT_VALIDATION_ERROR, "INPUT_VALIDATION_ERROR"},
+        {authError::INTERNAL_ERROR, "INTERNAL_ERROR"},
+        {authError::NO_SESSION, "NO_SESSION"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(authStatus,    {
+        {authStatus::CEMPTY, ""},
+        {authStatus::SUCCESS, "SUCCESS"},
+        {authStatus::FAIL, "FAIL"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(SubscriptionStatus,    {
+        {SubscriptionStatus::CEMPTY, ""},
+        {SubscriptionStatus::EXPIRED, "EXPIRED"},
+        {SubscriptionStatus::CANCELLED, "CANCELLED"},
+        {SubscriptionStatus::UNACTIVATED, "UNACTIVATED"},
+        {SubscriptionStatus::ACTIVATED, "ACTIVATED"},
+        {SubscriptionStatus::ALL, "ALL"},
+        });
+
+
+NLOHMANN_JSON_SERIALIZE_ENUM(Status,    {
+        {Status::CEMPTY, ""},
+        {Status::SUCCESS, "SUCCESS"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(ItemClass, {
+        {ItemClass::CEMPTY, ""},
+        {ItemClass::UNKNOWN, "UNKNOWN"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(Wallet,    {
+        {Wallet::CEMPTY, ""},
+        {Wallet::UK, "UK"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(IncludeItem,   {
+        {IncludeItem::CEMPTY, ""},
+        {IncludeItem::POKER_ROOM, "POKER_ROOM"},
+        {IncludeItem::EXCHANGE, "EXCHANGE"},
+        {IncludeItem::DEPOSITS_WITHDRAWALS, "DEPOSITS_WITHDRAWALS"},
+        {IncludeItem::ALL, "ALL"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(WinLose,   {
+        {WinLose::CEMPTY, ""},
+        {WinLose::COMMISSION_REVERSAL, "COMMISSION_REVERSAL"},
+        {WinLose::RESULT_WON, "RESULT_WON"},
+        {WinLose::RESULT_NOT_APPLICABLE, "RESULT_NOT_APPLICABLE"},
+        {WinLose::RESULT_LOST, "RESULT_LOST"},
+        {WinLose::RESULT_FIX, "RESULT_FIX"},
+        {WinLose::RESULT_ERR, "RESULT_ERR"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(GrantType, {
+        {GrantType::CEMPTY, ""},
+        {GrantType::AUTHORIZATION_CODE, "AUTHORIZATION_CODE"},
+        {GrantType::REFRESH_TOKEN, "REFRESH_TOKEN"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(AffiliateRelationStatus, {
+        {AffiliateRelationStatus::CEMPTY, ""},
+        {AffiliateRelationStatus::INVALID_USER, "INVALID_USER"},
+        {AffiliateRelationStatus::AFFILIATED, "AFFILIATED"},
+        {AffiliateRelationStatus::NOT_AFFILIATED, "NOT_AFFILIATED"},
+        });
+
+NLOHMANN_JSON_SERIALIZE_ENUM(TokenType, {
+        {TokenType::CEMPTY, ""},
+        {TokenType::BEARER, "BEARER"},
+        });
 
 #endif

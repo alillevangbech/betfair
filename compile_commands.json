@@ -5,13 +5,15 @@
       "-I/usr/include/cpr",
       "-I/usr/include/nlohmann",
       "-D_POSIX_C_SOURCE=200809L",
+      "-std=c++17",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-Os",
       "-c",
-      "-o",
-      "driver.o",
       "driver.cpp"
     ],
     "directory": "/home/albec/pshare/betfair/exApi",
-    "file": "/home/albec/pshare/betfair/exApi/driver.cpp",
-    "output": "/home/albec/pshare/betfair/exApi/driver.o"
+    "file": "/home/albec/pshare/betfair/exApi/driver.cpp"
   }
 ]

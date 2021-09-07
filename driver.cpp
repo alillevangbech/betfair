@@ -6,6 +6,7 @@
 #include <iostream>
 #include "cpr/cpr.h"
 #include "accType.h"
+#include "accLib.h"
 #include "accEnum.h"
 
 using json = nlohmann::json;
@@ -25,16 +26,6 @@ NLOHMANN_JSON_SERIALIZE_ENUM(statusCode, {
     {statusCode::EXCEPTION, "EXCEPTION"},
     {statusCode::ERROR, "ERROR"},
 })
-
-template<typename T>
-std::string EnumToString(const T e)
-{
-    json j = e;
-    std::string res = j.dump();
-    return res.substr(1,res.size() - 2);
-};
-
-// AccountFundsResponse getAccountFunds ()
 
 template <typename T>
 class Response
@@ -74,24 +65,25 @@ authKeepAlive keepAliveRequest(const std::string& appKey, const std::string& ses
         {"Connection", "keep-alive"},
     };
 
-     cpr::Response r = cpr::Post(cpr::Url{auth_global_url},
-                                authHeaders,
-                                authBody);
+    cpr::Response r = cpr::Post(cpr::Url{auth_global_url},
+            authHeaders,
+            authBody);
 
-     json j = json::parse(r.text);
-     authKeepAlive ret = j;
+    std::cout << r.text << std::endl;
+    json j = json::parse(r.text);
+    authKeepAlive ret = j;
 
-     return ret;
+    return ret;
 };
 
 int main()
 {
-    const std::string sessionId = "B3IjR0QLUcknNr8OkT/V0DcnjGU0pbOC6p1SFgFuQPI=";
+    const std::string sessionId = "fgJduBl0mZ967FZNjhNHdBgAwa+Q+yVt/b9BE3dSs4s=";
     const std::string appName = "BetfairAnalytics";
     const std::string appId = "88578";
     const std::string appKey = "VcwjIeTG67VJeQTZ";
     const std::string urlBase = "https://api.betfair.com/exchange/account/rest/v1.0/";
-    
+
     std::string method = urlBase + "getAccountFunds/";
     json body;
 
@@ -130,11 +122,10 @@ int main()
     };
 
 
-    //auto text = keepAliveRequest(appKey, sessionId);
-    //std::cout << text.token << std::endl;
-    //std::cout << text.product << std::endl;
-    //std::cout << EnumToString<authStatus>(text.status) << std::endl;
-    //std::cout << EnumToString<authError>(text.error) << std::endl;
+    auto text = keepAliveRequest(appKey, sessionId);
+    json fuck = text;
+
+
+    std::cout << fuck.dump() << std::endl;
     return 0;
 }
-
