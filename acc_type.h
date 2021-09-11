@@ -4,8 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "./accEnum.h"
-#include <json_fwd.hpp>
+#include "./acc_enum.h"
 
 using accDate = std::string;
 
@@ -31,8 +30,6 @@ struct ApplicationSubscription
         // Application key identifier
         std::string subscriptionToken;
 };
-void to_json(nlohmann::json& j, const ApplicationSubscription& p);
-void from_json(const nlohmann::json& j, ApplicationSubscription& p);
 
 // Wrapper object containing affiliate relation details
 struct AffiliateRelation
@@ -42,8 +39,6 @@ struct AffiliateRelation
     // ID of user
     std::string vendorClientId;
 };
-void to_json(nlohmann::json& j, const AffiliateRelation& p);
-void from_json(const nlohmann::json& j, AffiliateRelation& p);
 
 // Wrapper object containing vendor name and redirect url
 struct VendorDetails
@@ -56,8 +51,6 @@ struct VendorDetails
         // Internal id of the application
         long appVersionId;
 };
-void to_json(nlohmann::json& j, const VendorDetails& p);
-void from_json(const nlohmann::json& j, VendorDetails& p);
 
 // Wrapper object containing UserVendorSessionToken, RefreshToken and optionally a Subscription Token if one was created
 struct VendorAccessTokenInfo
@@ -74,8 +67,6 @@ struct VendorAccessTokenInfo
         // Session token used by web vendors
         std::string access_token;
 };
-void to_json(nlohmann::json& j, const VendorAccessTokenInfo& p);
-void from_json(const nlohmann::json& j, VendorAccessTokenInfo& p);
 
 
 // Wrapper object containing details of how a subscription should be created
@@ -89,8 +80,6 @@ struct SubscriptionOptions
         // How many days should a created subscription last for. Open ended subscription created if value not provided. 
         int subscription_length;
 };
-void to_json(nlohmann::json& j, const SubscriptionOptions& p);
-void from_json(const nlohmann::json& j, SubscriptionOptions& p);
 
 // Wrapper object containing authorisation code and redirect URL for web vendors
 struct AuthorisationResponse
@@ -101,8 +90,6 @@ struct AuthorisationResponse
         // The authorisation code
         std::string authorisationCode;
 };
-void to_json(nlohmann::json& j, const AuthorisationResponse& p);
-void from_json(const nlohmann::json& j, AuthorisationResponse& p);
 
 // Currency rate
 struct CurrencyRate
@@ -113,8 +100,6 @@ struct CurrencyRate
         // Three letter ISO 4217 code
         std::string currencyCode;
 };
-void to_json(nlohmann::json& j, const CurrencyRate& p);
-void from_json(const nlohmann::json& j, CurrencyRate& p);
 
 // TimeRange
 struct TimeRange
@@ -171,8 +156,6 @@ struct StatementLegacyData
         // The average matched price of the bet (null if no part has been matched);
         double avgPrice;
 };
-void to_json(nlohmann::json& j, const StatementLegacyData& p);
-void from_json(const nlohmann::json& j, StatementLegacyData& p);
 
 // Summary of a cleared order.
 struct StatementItem
@@ -193,8 +176,6 @@ struct StatementItem
         // An external reference, eg. equivalent to betId in the case of an exchange bet statement item.
         std::string refId;
 };
-void to_json(nlohmann::json& j, const StatementItem& p);
-void from_json(const nlohmann::json& j, StatementItem& p);
 
 // A container representing search results.
 struct AccountStatementReport
@@ -205,8 +186,6 @@ struct AccountStatementReport
         // The list of statement items returned by your request.
         std::vector<StatementItem> accountStatement;
 };
-void to_json(nlohmann::json& j, const AccountStatementReport& p);
-void from_json(const nlohmann::json& j, AccountStatementReport& p);
 
 // Response for Account details.
 struct AccountDetailsResponse
@@ -231,8 +210,6 @@ struct AccountDetailsResponse
         // Default user currency Code. See Currency Parameters for minimum bet sizes relating to each currency.
         std::string currencyCode;
 };
-void to_json(nlohmann::json& j, const AccountDetailsResponse& p);
-void from_json(const nlohmann::json& j, AccountDetailsResponse& p);
 
 // Response for retrieving available to bet.
 struct AccountFundsResponse
@@ -251,8 +228,6 @@ struct AccountFundsResponse
         // Amount available to bet.
         double availableToBetBalance;
 };
-void to_json(nlohmann::json& j, const AccountFundsResponse& p);
-void from_json(const nlohmann::json& j, AccountFundsResponse& p);
 
 // Describes a version of an external application
 struct DeveloperAppVersion
@@ -279,8 +254,6 @@ struct DeveloperAppVersion
         // The user who owns the specific version of the application
         std::string owner;
 };
-void to_json(nlohmann::json& j, const DeveloperAppVersion& p);
-void from_json(const nlohmann::json& j, DeveloperAppVersion& p);
 
 // Describes developer/vendor specific application
 struct DeveloperApp
@@ -293,8 +266,6 @@ struct DeveloperApp
         // The unique name of the application
         std::string appName;
 };
-void to_json(nlohmann::json& j, const DeveloperApp& p);
-void from_json(const nlohmann::json& j, DeveloperApp& p);
 
 // Subscription token information
 struct SubscriptionTokenInfo
@@ -313,8 +284,6 @@ struct SubscriptionTokenInfo
         // Subscription token
         std::string subscriptionToken;
 };
-void to_json(nlohmann::json& j, const SubscriptionTokenInfo& p);
-void from_json(const nlohmann::json& j, SubscriptionTokenInfo& p);
 
 // Application subscription details
 struct AccountSubscription
@@ -327,8 +296,6 @@ struct AccountSubscription
         // List of subscription token details
         std::vector<SubscriptionTokenInfo> subscriptionTokens;
 };
-void to_json(nlohmann::json& j, const AccountSubscription& p);
-void from_json(const nlohmann::json& j, AccountSubscription& p);
 
 // Application subscription history details
 struct SubscriptionHistory
@@ -351,8 +318,6 @@ struct SubscriptionHistory
         // Application key identifier
         std::string subscriptionToken;
 };
-void to_json(nlohmann::json& j, const SubscriptionHistory& p);
-void from_json(const nlohmann::json& j, SubscriptionHistory& p);
 
 // Transfer operation response
 struct TransferResponse
@@ -361,8 +326,6 @@ struct TransferResponse
         // The id of the transfer transaction that will be used in tracking the transfers between the wallets
         std::string transactionId;
 };
-void to_json(nlohmann::json& j, const TransferResponse& p);
-void from_json(const nlohmann::json& j, TransferResponse& p);
 
 struct bfAccountAPINGException
 {
@@ -370,22 +333,14 @@ struct bfAccountAPINGException
     std::string errorCode;
     std::string errorDetails;
 
-    bool empty() const { return requestUUID.empty() && errorCode.empty() && errorDetails.empty();}
-    void setEmpty() { requestUUID = std::string(); errorCode = std::string(); errorDetails = std::string(); }
 };
-void to_json(nlohmann::json& j, const bfAccountAPINGException& p);
-void from_json(const nlohmann::json& j, bfAccountAPINGException& p);
 
 struct bfDetail
 {
     std::string exceptionname;
     bfAccountAPINGException AccountAPINGException;
 
-    bool empty() const { return exceptionname.empty() && AccountAPINGException.empty();}
-    void setEmpty() { exceptionname = std::string(); AccountAPINGException.setEmpty(); }
 };
-void to_json(nlohmann::json& j, const bfDetail& p);
-void from_json(const nlohmann::json& j, bfDetail& p);
 
 
 struct bfExceptionResponse
@@ -394,10 +349,7 @@ struct bfExceptionResponse
     std::string faultstring;
     bfDetail detail;
 
-    bool empty() const { return faultcode.empty() && faultstring.empty() && detail.empty();}
 };
-void to_json(nlohmann::json& j, const bfExceptionResponse& p);
-void from_json(const nlohmann::json& j, bfExceptionResponse& p);
 
 
 // LOGIN, KEEP_ALIVE, LOGOUT
@@ -409,7 +361,5 @@ struct authKeepAlive
         authStatus status;
         authError error;
 };
-void to_json(nlohmann::json& j, const authKeepAlive& p);
-void from_json(const nlohmann::json& j, authKeepAlive& p);
 
 #endif

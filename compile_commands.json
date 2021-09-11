@@ -11,6 +11,40 @@
       "-Wextra",
       "-Os",
       "-c",
+      "session.cpp"
+    ],
+    "directory": "/home/albec/pshare/betfair/exApi",
+    "file": "/home/albec/pshare/betfair/exApi/session.cpp"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-I/usr/include/cpr",
+      "-I/usr/include/nlohmann",
+      "-D_POSIX_C_SOURCE=200809L",
+      "-std=c++17",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-Os",
+      "-c",
+      "util.cpp"
+    ],
+    "directory": "/home/albec/pshare/betfair/exApi",
+    "file": "/home/albec/pshare/betfair/exApi/util.cpp"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-I/usr/include/cpr",
+      "-I/usr/include/nlohmann",
+      "-D_POSIX_C_SOURCE=200809L",
+      "-std=c++17",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-Os",
+      "-c",
       "driver.cpp"
     ],
     "directory": "/home/albec/pshare/betfair/exApi",

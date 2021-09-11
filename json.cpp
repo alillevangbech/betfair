@@ -1,7 +1,8 @@
 #include <json.hpp>
-#include "./accEnum.h"
-#include "./accLib.h"
-#include "./accType.h"
+#include "./json.h"
+#include "./acc_enum.h"
+#include "./acc_type.h"
+#include "./util.h"
 
 using accDate = std::string;
 
@@ -12,6 +13,7 @@ void to_json(nlohmann::json& j, const TransferResponse& p)
         {"transactionId", p.transactionId},
     };
 }
+
 void from_json(const nlohmann::json& j, TransferResponse& p)
 {
     j.at("transactionId").get_to(p.transactionId);
@@ -436,7 +438,7 @@ void to_json(nlohmann::json& j, const bfDetail& p) {
     j = nlohmann::json{
         {"exceptionname", p.exceptionname},
     };
-    if (p.AccountAPINGException.empty())
+    if (empty(p.AccountAPINGException))
         j.push_back({"AccountAPINGException", nlohmann::json::object()});
     else
         j.push_back({"AccountAPINGException", p.AccountAPINGException});
@@ -445,8 +447,8 @@ void to_json(nlohmann::json& j, const bfDetail& p) {
 void from_json(const nlohmann::json& j, bfDetail& p) {
     j.at("exceptionname").get_to(p.exceptionname);
 
-    if (j.at("AccountAPINGException").empty())
-        p.AccountAPINGException.setEmpty();
+    if (empty(j.at("AccountAPINGException")))
+		setEmpty(p.AccountAPINGException);
     else
         j.at("AccountAPINGException").get_to(p.AccountAPINGException);
 }
@@ -457,7 +459,7 @@ void to_json(nlohmann::json& j, const bfExceptionResponse& p) {
         {"faultcode", p.faultcode},
         {"faultstring", p.faultstring}
     };
-    if (p.detail.empty())
+    if (empty(p.detail))
         j.push_back({"detail", nlohmann::json::object()});
     else
         j.push_back({"detail", p.detail});
@@ -467,8 +469,8 @@ void from_json(const nlohmann::json& j, bfExceptionResponse& p) {
     j.at("faultcode").get_to(p.faultcode);
     j.at("faultstring").get_to(p.faultstring);
 
-    if (j.at("detail").empty())
-        p.detail.setEmpty();
+    if (empty(j.at("detail")))
+		setEmpty(p.detail);
     else
         j.at("detail").get_to(p.detail);
 }
