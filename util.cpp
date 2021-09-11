@@ -1,6 +1,7 @@
 #include <string>
 #include "util.h"
 #include "acc_type.h"
+#include "acc_enum.h"
 
 bool empty(const bfAccountAPINGException& b)
 { 

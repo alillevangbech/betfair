@@ -1,8 +1,8 @@
 #include <json.hpp>
 #include "./json.h"
+#include "./util.h"
 #include "./acc_enum.h"
 #include "./acc_type.h"
-#include "./util.h"
 
 using accDate = std::string;
 
