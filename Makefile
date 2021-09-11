@@ -20,7 +20,7 @@ build: $(OBJ) driver
 driver: driver.o $(OBJ)
 	$(CC) -o ${PRG_NAME} $(LDFLAGS) $? $(LDLIBS) $(CPPFLAGS)
 
-driver.o: driver.cpp driver.h
+driver.o: driver.cpp
 
 json.o: json.cpp json.h
 util.o: util.cpp util.h

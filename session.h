@@ -11,13 +11,18 @@
 
 class Session
 {
+	private:
+		const std::string* m_baseurl;
+
 	public:
-		const std::string* m_baseurl = new std::string("https://api.betfair.com/exchange/account/rest/v1.0/");
 		std::string* m_username;
 		std::string* m_password;
 		std::string* m_sessionId;
 		std::string* m_appName;
 		std::string* m_appKey;
+
+		Session();
+		~Session();
 
 
 		// keep alive	

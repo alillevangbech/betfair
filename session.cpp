@@ -1,8 +1,25 @@
+#include <string>
+
 #include "./session.h"
 #include "./response.h"
 #include "./util.h"
 #include "./json.h"
 #include "./cpr.h"
+
+Session::Session()
+{
+	m_baseurl = new std::string("https://api.betfair.com/exchange/account/rest/v1.0/");
+}
+
+Session::~Session()
+{
+	delete this->m_baseurl;
+	delete this->m_sessionId;
+	delete this->m_appKey;
+	delete this->m_appName;
+	delete this->m_username;
+	delete this->m_password;
+}
 
 Response<DeveloperApp>* Session::createDeveloperAppKeys (/* const std::string& appName */)
 {
