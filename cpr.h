@@ -4,6 +4,8 @@
 #include <cpr/cpr.h>
 #include <nlohmann/json.hpp>
 #include "session.h"
+#include "json.h"
+#include <iostream>
 
 
 cpr::Response inline AuthPostRequest(const Session& session, const std::string& url)
@@ -50,10 +52,15 @@ void TranslateCprResponse(Response<T>* myResponse, cpr::Response cprReponse)
 
 		if (myResponse->m_statusCode == statusCode::VALID)
 		{
-			myResponse->m_bfData = nlohmann::json(cprReponse.text);
+			std::cout << "Valid" << std::endl;
+			nlohmann::json j = nlohmann::json::parse(cprReponse.text);
+			std::cout << "Valid" << std::endl;
+			*myResponse->m_bfData = j.get<T>();
+			std::cout << "Valid" << std::endl;
 		}
 		else
 		{
+			std::cout << "Not Valid" << std::endl;
 			myResponse->m_bfException = nlohmann::json(cprReponse.text);
 		}
 
@@ -62,6 +69,7 @@ void TranslateCprResponse(Response<T>* myResponse, cpr::Response cprReponse)
 	{
 		// TODO: log parsing error;
 	}
+	std::cout << "Valid" << std::endl;
 }
 
 #endif

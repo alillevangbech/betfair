@@ -1,16 +1,22 @@
+#ifndef JSON_H
+#define JSON_H
+
 #include <string>
 #include "acc_enum.h"
 #include "acc_type.h"
 #include <nlohmann/json.hpp>
 #include "session.h"
+#include <iostream>
 
  template<typename T>
  std::string sEnum(const T e)
  {
      nlohmann::json j = e;
+	 std::cout << j.dump() << std::endl;
      std::string res = j.dump();
      return res.substr(1,res.size() - 2);
  };
+
 
 void to_json(nlohmann::json& j, const authKeepAlive& p);
 void from_json(const nlohmann::json& j, authKeepAlive& p);
@@ -145,3 +151,5 @@ NLOHMANN_JSON_SERIALIZE_ENUM(TokenType, {
         {TokenType::CEMPTY, ""},
         {TokenType::BEARER, "BEARER"},
         });
+
+#endif

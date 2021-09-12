@@ -3,6 +3,7 @@
 #include "./util.h"
 #include "./acc_enum.h"
 #include "./acc_type.h"
+#include <stdio.h>
 
 using accDate = std::string;
 
@@ -403,6 +404,7 @@ void from_json(const nlohmann::json& j, ApplicationSubscription& p)
 // authKeepAlive
 void to_json(nlohmann::json& j, const authKeepAlive& p)
 {
+	std::cout << "toJson" << std::endl;
     j = nlohmann::json{
         {"token", p.token},
         {"product", p.product},
@@ -414,8 +416,6 @@ void from_json(const nlohmann::json& j, authKeepAlive& p)
 {
     j.at("token").get_to(p.token);
     j.at("product").get_to(p.product);
-    p.status = j.at("status");
-    p.error = j.at("error");
 }
 
 // bfAccountAPINGException

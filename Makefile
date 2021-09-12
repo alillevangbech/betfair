@@ -22,9 +22,9 @@ driver: driver.o $(OBJ)
 
 driver.o: driver.cpp
 
-json.o: json.cpp json.h
-util.o: util.cpp util.h
-session.o: session.cpp session.h
+json.o: json.cpp json.h util.h acc_enum.h acc_enum.h
+util.o: util.cpp util.h acc_enum.h acc_enum.h
+session.o: session.cpp session.h response.h util.h json.h cpr.h
 
 .cpp.o:
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<
