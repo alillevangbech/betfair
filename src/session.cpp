@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <string>
 
 #include "./session.h"
@@ -6,7 +7,7 @@
 #include "./json.h"
 #include "./cpr.h"
 
-Session::Session()
+Session::Session() : m_username(nullptr), m_password(nullptr), m_sessionId(nullptr), m_appName(nullptr), m_appKey(nullptr)
 {
 	m_baseurl = new std::string("https://api.betfair.com/exchange/account/rest/v1.0/");
 }
@@ -36,7 +37,7 @@ Response<DeveloperApp>* Session::createDeveloperAppKeys (/* const std::string& a
 Response<authKeepAlive>* Session::keepAliveRequest(/*const std::string& appKey, const std::string& sessionId*/)
 {
 	Response<authKeepAlive>* result = new Response<authKeepAlive>();
-	std::string url = std::string("https://identitysso.betfair.com/api/keepAlive");
+	std::string url = std::string("https://identitysso.betfair.com/api/keepAlive/");
 
 	auto cprResponse = AuthPostRequest(*this, url);
 	TranslateCprResponse(result, cprResponse);

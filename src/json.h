@@ -12,7 +12,6 @@
  std::string sEnum(const T e)
  {
      nlohmann::json j = e;
-	 std::cout << j.dump() << std::endl;
      std::string res = j.dump();
      return res.substr(1,res.size() - 2);
  };

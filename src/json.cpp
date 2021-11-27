@@ -392,7 +392,7 @@ void from_json(const nlohmann::json& j, ApplicationSubscription& p)
 {
     j.at("vendorClientId").get_to(p.vendorClientId);
     j.at("clientReference").get_to(p.clientReference);
-    p.subscriptionToken = j.at("subscriptionToken");
+    j.at("subscriptionStatus").get_to(p.subscriptionStatus);
     j.at("cancellationDateTime").get_to(p.cancellationDateTime);
     j.at("activationDateTime").get_to(p.activationDateTime);
     j.at("createdDateTime").get_to(p.createdDateTime);
@@ -404,7 +404,6 @@ void from_json(const nlohmann::json& j, ApplicationSubscription& p)
 // authKeepAlive
 void to_json(nlohmann::json& j, const authKeepAlive& p)
 {
-	std::cout << "toJson" << std::endl;
     j = nlohmann::json{
         {"token", p.token},
         {"product", p.product},
@@ -416,6 +415,8 @@ void from_json(const nlohmann::json& j, authKeepAlive& p)
 {
     j.at("token").get_to(p.token);
     j.at("product").get_to(p.product);
+    j.at("status").get_to(p.status);
+    j.at("error").get_to(p.error);
 }
 
 // bfAccountAPINGException

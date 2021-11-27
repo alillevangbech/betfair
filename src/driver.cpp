@@ -19,9 +19,7 @@ int main()
 	session.m_username = new std::string("alexanderlillevangbech@gmail.com");
 	session.m_password = new std::string("Khjiyu867");
 	
-	std::cout << "here" << std::endl;
-	auto *rep = session.keepAliveRequest();
-	std::cout << "here" << std::endl;
+	auto rep = std::unique_ptr<Response<authKeepAlive>>(session.keepAliveRequest());
 
 	if (rep->m_statusCode == statusCode::VALID)
 	{

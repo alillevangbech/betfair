@@ -48,28 +48,25 @@ void TranslateCprResponse(Response<T>* myResponse, cpr::Response cprReponse)
 {
 	try
 	{
+		std::cout << cprReponse.text << std::endl;
+		std::cout << cprReponse.status_code << std::endl;
 		myResponse->m_statusCode = static_cast<statusCode>(cprReponse.status_code);
 
 		if (myResponse->m_statusCode == statusCode::VALID)
 		{
-			std::cout << "Valid" << std::endl;
-			nlohmann::json j = nlohmann::json::parse(cprReponse.text);
-			std::cout << "Valid" << std::endl;
-			*myResponse->m_bfData = j.get<T>();
-			std::cout << "Valid" << std::endl;
+			*myResponse->m_bfData = nlohmann::json::parse(cprReponse.text);
 		}
 		else
 		{
-			std::cout << "Not Valid" << std::endl;
-			myResponse->m_bfException = nlohmann::json(cprReponse.text);
+			*myResponse->m_bfException = nlohmann::json::parse(cprReponse.text);
 		}
 
 	}
 	catch (nlohmann::json::parse_error&)
 	{
+		std::cout << "parsing fuckup" << std::endl;
 		// TODO: log parsing error;
 	}
-	std::cout << "Valid" << std::endl;
 }
 
 #endif
