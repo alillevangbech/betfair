@@ -1,7 +1,0 @@
-[submodule "json"]
-	path = lib/json
-	url = git@github.com:nlohmann/json
-	shallow = true
-[submodule "cpr"]
-	path = lib/cpr
-	url = git@github.com:libcpr/cpr
