@@ -1,11 +1,11 @@
 #include <cstddef>
 #include <string>
 
-#include "./session.h"
-#include "./response.h"
-#include "./util.h"
-#include "./json.h"
-#include "./cpr.h"
+#include "session.h"
+#include "response.h"
+#include "util.h"
+#include "json.h"
+#include "cpr.h"
 
 Session::Session() : m_username(nullptr), m_password(nullptr), m_sessionId(nullptr), m_appName(nullptr), m_appKey(nullptr)
 {

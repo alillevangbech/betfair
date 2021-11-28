@@ -1,14 +1,7 @@
 
-CPRINC = /usr/include/cpr
-CPRLIB = /usr/lib/libcpr.so
+CFLAGS   = -std=c++17 -pedantic -Wall -Wextra -Os -D_POSIX_C_SOURCE=200809L
+CFLAGS	 += -I./lib/cpr/include -I./lib/json/include
 
-# json || header only
-NLOHMANNINC = /usr/include/nlohmann
-
-CPPFLAGS = -I$(CPRINC) -I$(NLOHMANNINC) -D_POSIX_C_SOURCE=200809L
-CFLAGS   = -std=c++17 -pedantic -Wall -Wextra -Os
-
-LDFLAGS  = -L$(CPRLIB) -s
-LDLIBS   = -lcpr
+LDFLAGS  = ./lib/cpr/build/lib/libcpr.so -lcpr
 
 CC = g++

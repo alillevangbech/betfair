@@ -4,7 +4,7 @@
 #include <iostream>
 #include <memory.h>
 #include "acc_type.h"
-#include "json_fwd.hpp"
+#include <nlohmann/json_fwd.hpp>
 #include "response.h"
 #include "session.h"
 #include "json.h"
@@ -12,6 +12,7 @@
 
 int main()
 {
+	/*
 	Session session = Session();
 	session.m_sessionId = new std::string("Mg3jIqYqBSZMkUEdj19hgdHaCyL46i0KpKyHWHNBz+Q=");
 	session.m_appKey = new std::string("VcwjIeTG67VJeQTZ");
@@ -31,5 +32,7 @@ int main()
 		nlohmann::json j = *rep->m_bfException;
 		std::cout << j.dump() << std::endl;
 	}
+	*/
+	return 0;
 }
 

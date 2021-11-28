@@ -2,69 +2,52 @@
   {
     "arguments": [
       "/usr/bin/g++",
-      "-I/usr/include/cpr",
-      "-I/usr/include/nlohmann",
-      "-D_POSIX_C_SOURCE=200809L",
+      "-c",
       "-std=c++17",
       "-pedantic",
       "-Wall",
       "-Wextra",
       "-Os",
-      "-c",
-      "json.cpp"
+      "-D_POSIX_C_SOURCE=200809L",
+      "-Ilib/cpr/include",
+      "-Ilib/json/include",
+      "src/driver.cpp"
     ],
     "directory": "/home/albec/pshare/betfair/exApi",
-    "file": "/home/albec/pshare/betfair/exApi/json.cpp"
+    "file": "/home/albec/pshare/betfair/exApi/src/driver.cpp"
   },
   {
     "arguments": [
       "/usr/bin/g++",
-      "-I/usr/include/cpr",
-      "-I/usr/include/nlohmann",
-      "-D_POSIX_C_SOURCE=200809L",
+      "-c",
       "-std=c++17",
       "-pedantic",
       "-Wall",
       "-Wextra",
       "-Os",
-      "-c",
-      "session.cpp"
+      "-D_POSIX_C_SOURCE=200809L",
+      "-Ilib/cpr/include",
+      "-Ilib/json/include",
+      "src/json.cpp"
     ],
     "directory": "/home/albec/pshare/betfair/exApi",
-    "file": "/home/albec/pshare/betfair/exApi/session.cpp"
+    "file": "/home/albec/pshare/betfair/exApi/src/json.cpp"
   },
   {
     "arguments": [
       "/usr/bin/g++",
-      "-I/usr/include/cpr",
-      "-I/usr/include/nlohmann",
-      "-D_POSIX_C_SOURCE=200809L",
+      "-c",
       "-std=c++17",
       "-pedantic",
       "-Wall",
       "-Wextra",
       "-Os",
-      "-c",
-      "util.cpp"
-    ],
-    "directory": "/home/albec/pshare/betfair/exApi",
-    "file": "/home/albec/pshare/betfair/exApi/util.cpp"
-  },
-  {
-    "arguments": [
-      "/usr/bin/g++",
-      "-I/usr/include/cpr",
-      "-I/usr/include/nlohmann",
       "-D_POSIX_C_SOURCE=200809L",
-      "-std=c++17",
-      "-pedantic",
-      "-Wall",
-      "-Wextra",
-      "-Os",
-      "-c",
-      "driver.cpp"
+      "-Ilib/cpr/include",
+      "-Ilib/json/include",
+      "src/session.cpp"
     ],
     "directory": "/home/albec/pshare/betfair/exApi",
-    "file": "/home/albec/pshare/betfair/exApi/driver.cpp"
+    "file": "/home/albec/pshare/betfair/exApi/src/session.cpp"
   }
 ]
