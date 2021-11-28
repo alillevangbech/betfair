@@ -1,7 +1,6 @@
 
 CFLAGS   = -std=c++17 -pedantic -Wall -Wextra -Os -D_POSIX_C_SOURCE=200809L
-CFLAGS	 += -I./lib/cpr/include -I./lib/json/include
-
-LDFLAGS  = ./lib/cpr/build/lib/libcpr.so -lcpr
+CFLAGS	 += -Ilib/cpr/include -Ilib/json/include 
+LDFLAGS  = lib/cpr/build/lib/* -lssl -lcrypto -lssh2 -lpthread
 
 CC = g++
