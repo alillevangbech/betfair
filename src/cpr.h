@@ -3,6 +3,7 @@
 
 #include <cpr/cpr.h>
 #include <nlohmann/json.hpp>
+#include "cpr/ssl_options.h"
 #include "session.h"
 #include "json.h"
 #include <iostream>
@@ -46,26 +47,36 @@ cpr::Response inline PostRequest(const Session& session, const std::string& url,
 template <typename T>
 void TranslateCprResponse(Response<T>* myResponse, cpr::Response cprReponse)
 {
+
+	if (cprReponse.text.empty()) {
+		std::cout << "betfair response has empty data" << std::endl;
+		std::cout << "status: " << cprReponse.status_code << std::endl;
+		std::cout << "error.message: " << cprReponse.error.message << std::endl;
+		return;
+	}
+
 	try
 	{
-		std::cout << cprReponse.text << std::endl;
-		std::cout << cprReponse.status_code << std::endl;
 		myResponse->m_statusCode = static_cast<statusCode>(cprReponse.status_code);
+		std::cout << "statusCode: " << sEnum(myResponse->m_statusCode) << std::endl;
 
 		if (myResponse->m_statusCode == statusCode::VALID)
 		{
 			*myResponse->m_bfData = nlohmann::json::parse(cprReponse.text);
 		}
 		else
-		{
+		{	
 			*myResponse->m_bfException = nlohmann::json::parse(cprReponse.text);
 		}
 
 	}
 	catch (nlohmann::json::parse_error&)
 	{
-		std::cout << "parsing fuckup" << std::endl;
 		// TODO: log parsing error;
+		std::cout << "parsing fuckup" << std::endl;
+		std::cout << "text: " << cprReponse.text << std::endl;
+		std::cout << "status: " << cprReponse.status_code << std::endl;
+		std::cout << "error.message: " << cprReponse.error.message << std::endl;
 	}
 }
 

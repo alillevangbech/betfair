@@ -1,12 +1,13 @@
 #ifndef JSON_H
 #define JSON_H
 
+#include <iostream>
 #include <string>
+#include <nlohmann/json.hpp>
+
 #include "acc_enum.h"
 #include "acc_type.h"
-#include <nlohmann/json.hpp>
 #include "session.h"
-#include <iostream>
 
  template<typename T>
  std::string sEnum(const T e)

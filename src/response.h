@@ -5,7 +5,7 @@
 #include "./acc_enum.h"
 #include "./acc_type.h"
 
-enum class statusCode
+enum statusCode
 {
 	UNKNOWN = 0,
 	VALID = 200,
@@ -25,5 +25,6 @@ class Response
 					 m_statusCode(statusCode::UNKNOWN) {};
 		~Response(){};
 };
+
 
 #endif

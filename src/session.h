@@ -7,8 +7,11 @@
 #include "./acc_type_fwd.h"
 #include "./response.h"
 
-
-
+/* 
+ * raw pointers we want a pure c interface at some point
+ * std::string needs to be replaced with char*
+ * same with vector
+ */
 class Session
 {
 	private:

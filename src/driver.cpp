@@ -2,9 +2,10 @@
 #include <memory>
 #include <string>
 #include <iostream>
-#include <memory.h>
-#include "acc_type.h"
+
 #include <nlohmann/json_fwd.hpp>
+
+#include "acc_type.h"
 #include "response.h"
 #include "session.h"
 #include "json.h"
@@ -12,13 +13,13 @@
 
 int main()
 {
-	/*
 	Session session = Session();
-	session.m_sessionId = new std::string("Mg3jIqYqBSZMkUEdj19hgdHaCyL46i0KpKyHWHNBz+Q=");
-	session.m_appKey = new std::string("VcwjIeTG67VJeQTZ");
-	session.m_appName = new std::string("BetfairAnalytics");
-	session.m_username = new std::string("alexanderlillevangbech@gmail.com");
-	session.m_password = new std::string("Khjiyu867");
+	/* read from user_config file or something */
+	session.m_sessionId = new std::string("xx");
+	session.m_appKey = new std::string("xx");
+	session.m_appName = new std::string("xx");
+	session.m_username = new std::string("xx@yy.com");
+	session.m_password = new std::string("xx");
 	
 	auto rep = std::unique_ptr<Response<authKeepAlive>>(session.keepAliveRequest());
 
@@ -32,7 +33,7 @@ int main()
 		nlohmann::json j = *rep->m_bfException;
 		std::cout << j.dump() << std::endl;
 	}
-	*/
+
 	return 0;
 }
 
